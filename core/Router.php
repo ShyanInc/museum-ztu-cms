@@ -31,6 +31,7 @@ class Router
         $method = 'action' . ucfirst($parts[1]);
         if (class_exists($controller)) {
             $controllerObject = new $controller();
+            Core::getInstance()->controllerObject = $controllerObject;
             if (method_exists($controller, $method)) {
                 array_splice($parts, 0, 2);
                 return $controllerObject->$method($parts);

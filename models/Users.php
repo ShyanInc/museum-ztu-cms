@@ -26,6 +26,16 @@ class Users extends Model
         }
     }
 
+    public static function FindByLogin($login)
+    {
+        $rows = self::findByCondition(['login' => $login]);
+        if (!empty($rows)) {
+            return $rows[0];
+        } else {
+            return null;
+        }
+    }
+
     public static function IsUserLogged()
     {
         return !empty(Core::getInstance()->session->get('user'));
@@ -39,5 +49,15 @@ class Users extends Model
     public static function LogoutUser()
     {
         Core::getInstance()->session->remove('user');
+    }
+
+    public static function RegisterUser($login, $password, $firstname, $lastname)
+    {
+        $user = new Users();
+        $user->login = $login;
+        $user->password = $password;
+        $user->firstname = $firstname;
+        $user->lastname = $lastname;
+        $user->save();
     }
 }

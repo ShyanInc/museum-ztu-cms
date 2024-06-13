@@ -12,6 +12,7 @@ class Core
     public $template;
     public $db;
     public $session;
+    public Controller $controllerObject;
 
     private static $instance;
 

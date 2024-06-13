@@ -1,4 +1,5 @@
 <?php
+/** @var string $error_message Error message */
 $this->Title = 'Login';
 ?>
 <form method="post" action="">

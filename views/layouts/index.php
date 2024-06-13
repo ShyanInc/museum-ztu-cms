@@ -38,35 +38,36 @@ if (empty($Content)) {
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-                <li><a href="#" class="nav-link px-2 link-body-emphasis">Inventory</a></li>
+                <li><a href="/" class="nav-link px-2 link-secondary">Головна</a></li>
                 <li><a href="#" class="nav-link px-2 link-body-emphasis">Customers</a></li>
                 <li><a href="#" class="nav-link px-2 link-body-emphasis">Products</a></li>
+                <?php if (!Users::IsUserLogged()) : ?>
+                    <li><a href="/users/login" class="nav-link px-2 link-body-emphasis">Увійти</a></li>
+                    <li><a href="/users/register" class="nav-link px-2 link-body-emphasis">Зареєструватися</a></li>
+                <?php endif; ?>
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                 <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
             </form>
 
-            <div class="dropdown text-end">
-                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
-                   data-bs-toggle="dropdown" aria-expanded="false">
-                    <?php if (Users::IsUserLogged()) : ?>
+            <?php if (Users::IsUserLogged()) : ?>
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                       data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                    <?php endif; ?>
-                </a>
-                <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <?php if (Users::IsUserLogged()) : ?>
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="/users/logout">Logout</a></li>
-                    <?php endif; ?>
-                </ul>
-            </div>
+                        <li><a class="dropdown-item" href="/users/logout">Вийти</a></li>
+                    </ul>
+                </div>
+            <?php endif; ?>
         </div>
     </header>
 </div>
