@@ -13,7 +13,7 @@ class NewsController extends Controller
 
     public function actionIndex()
     {
-        return $this->render();
+        return $this->render('views/news/view.php');
     }
 
     public function actionView()
