@@ -6,7 +6,7 @@ use core\Controller;
 
 class AboutController extends Controller
 {
-    public function actionIndex()
+    public function actionIndex(): array
     {
         return $this->render();
     }

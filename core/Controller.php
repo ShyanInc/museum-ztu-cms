@@ -31,11 +31,16 @@ class Controller
         $this->errorMessages = [];
     }
 
-    public function render($pathToView = null): array
+    public function render($pathToView = null, $params = null): array
     {
         if (!empty($pathToView)) {
             $this->template->setTemplateFilePath($pathToView);
         }
+
+        if (!empty($params)) {
+            $this->template->setParams($params);
+        }
+
         return [
             'Content' => $this->template->getHTML(),
         ];

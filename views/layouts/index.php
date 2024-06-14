@@ -40,6 +40,7 @@ if (empty($Content)) {
             <li class="nav-item"><a href="/about" class="nav-link">Про музей</a></li>
             <li class="nav-item"><a href="/galleries" class="nav-link">Галереї</a></li>
             <li class="nav-item"><a href="/events" class="nav-link">Події</a></li>
+            <li class="nav-item"><a href="/posts" class="nav-link">Публікації</a></li>
             <li class="nav-item"><a href="/contact" class="nav-link">Контакти</a></li>
         </ul>
         <?php if (!Users::IsUserLogged()) : ?>
@@ -50,6 +51,21 @@ if (empty($Content)) {
                 <a href="/users/register">
                     <button type="button" class="btn btn-warning">Зареєструватися</button>
                 </a>
+            </div>
+        <?php endif; ?>
+        <?php if (Users::IsUserLogged()) : ?>
+            <div class="mt-auto mb-auto">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Панель
+                    управління</a>
+                <ul class="dropdown-menu">
+
+                    <?php if (Users::IsUserAdmin()) : ?>
+                        <li><a class="dropdown-item" href="/admin/galleries">Галереї</a></li>
+                        <li><a class="dropdown-item" href="/admin/events">Події</a></li>
+                    <?php endif; ?>
+                    <li><a class="dropdown-item" href="/admin/posts">Публікації</a></li>
+                    <li><a class="dropdown-item" href="/users/logout">Вийти</a></li>
+                </ul>
             </div>
         <?php endif; ?>
     </header>

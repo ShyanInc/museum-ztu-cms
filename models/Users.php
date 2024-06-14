@@ -7,18 +7,19 @@ use core\Model;
 
 /**
  * @property int $id Id
- * @property string $login Login
+ * @property string $email Email
  * @property string $password Password
- * @property string $firstname Name
- * @property string $lastname Surname
+ * @property string $name Name
+ * @property string $surname Surname
+ * @property string $role Role
  */
 class Users extends Model
 {
     public static $tableName = 'users';
 
-    public static function FindByCredentials($login, $password)
+    public static function FindByCredentials($email, $password)
     {
-        $rows = self::findByCondition(['login' => $login, 'password' => $password]);
+        $rows = self::findByCondition(['email' => $email, 'password' => $password]);
         if (!empty($rows)) {
             return $rows[0];
         } else {
@@ -26,9 +27,9 @@ class Users extends Model
         }
     }
 
-    public static function FindByEmail($login)
+    public static function FindByEmail($email)
     {
-        $rows = self::findByCondition(['login' => $login]);
+        $rows = self::findByCondition(['email' => $email]);
         if (!empty($rows)) {
             return $rows[0];
         } else {
@@ -51,13 +52,19 @@ class Users extends Model
         Core::getInstance()->session->remove('user');
     }
 
-    public static function RegisterUser($login, $password, $firstname, $lastname)
+    public static function RegisterUser($email, $password, $name, $surname)
     {
         $user = new Users();
-        $user->login = $login;
+        $user->email = $email;
         $user->password = $password;
-        $user->firstname = $firstname;
-        $user->lastname = $lastname;
+        $user->name = $name;
+        $user->surname = $surname;
+        $user->role = 'editor';
         $user->save();
+    }
+
+    public static function IsUserAdmin()
+    {
+        return Core::getInstance()->session->get('user')['role'] === 'admin';
     }
 }

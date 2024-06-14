@@ -11,3 +11,7 @@ a {
     margin-right: auto;
     max-width: 300px;
 }
+
+.gallery-card-image img {
+    height: 225px;
+}

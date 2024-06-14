@@ -35,8 +35,8 @@ class UsersController extends Controller
                 $this->addErrorMessage('Користувач з такою ел.поштою вже існує');
             }
 
-            if (strlen($this->post->login) === 0) {
-                $this->addErrorMessage('Логін не вказано');
+            if (strlen($this->post->email) === 0) {
+                $this->addErrorMessage('Ел.пошту не вказано');
             }
 
             if (strlen($this->post->password) === 0) {
@@ -51,16 +51,16 @@ class UsersController extends Controller
                 $this->addErrorMessage('Паролі не співпадають');
             }
 
-            if (strlen($this->post->firstname) === 0) {
+            if (strlen($this->post->name) === 0) {
                 $this->addErrorMessage('Ім\'я не вказано');
             }
 
-            if (strlen($this->post->lastname) === 0) {
+            if (strlen($this->post->surname) === 0) {
                 $this->addErrorMessage('Прізвище не вказано');
             }
 
             if (!$this->isErrorMessagesExists()) {
-                Users::RegisterUser($this->post->login, $this->post->password, $this->post->firstname, $this->post->lastname);
+                Users::RegisterUser($this->post->email, $this->post->password, $this->post->name, $this->post->surname);
                 return $this->redirect('/users/registersuccess');
             }
         }

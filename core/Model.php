@@ -34,6 +34,16 @@ class Model
         Core::getInstance()->db->delete(static::$tableName, $conditionAssocArray);
     }
 
+    public static function findAll(): array|null
+    {
+        $arr = Core::getInstance()->db->select(static::$tableName, '*');
+        if (count($arr) > 0) {
+            return $arr;
+        } else {
+            return null;
+        }
+    }
+
     public static function findById($id)
     {
         $arr = Core::getInstance()->db->select(static::$tableName, '*', [static::$primaryKey => $id]);
