@@ -5,12 +5,10 @@
 $this->Title = 'Редагування галереї';
 
 $filePath = $gallery['image'];
-if ($filePath == null || !is_file($filePath)) {
+$rootPath = \core\Core::getInstance()->rootDirPath;
+if ($filePath == null || !is_file($rootPath . $filePath)) {
     $filePath = '/globals/images/gallery.jpg';
-} else {
-    $filePath = '/' . $filePath;
 }
-
 ?>
 
 <h1 class="text-center mt-1">Редагування галереї</h1>
