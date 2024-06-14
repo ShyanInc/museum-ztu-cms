@@ -13,8 +13,51 @@ class GalleriesController extends Controller
         return $this->render(null, ['galleries' => $galleries]);
     }
 
+    public function actionAdd()
+    {
+        if ($this->isPost) {
+            $galleryData = $this->post->getAll();
+            foreach ($galleryData as $key => $value) {
+                if (empty($value)) {
+                    return null;
+                }
+            }
+            $gallery = new Galleries();
+            $gallery->title = $galleryData['title'];
+            $gallery->description = $galleryData['description'];
+            $gallery->short_description = $galleryData['short_description'];
+
+            $imagePath = null;
+            if (!empty($_FILES['image']['tmp_name'])) {
+                $imagePath = Galleries::uploadImage($_FILES['image']);
+            }
+            $gallery->image = $imagePath;
+            $gallery->save();
+            return $this->redirect('/admin/galleries');
+        }
+
+        return $this->render();
+    }
+
     public function actionEdit(array $params)
     {
+        if (count($params) === 0) {
+            return null;
+        }
+
+        $id = $params[0];
+
+        if ($this->isPost) {
+            $editedGallery = $this->post->getAll();
+            foreach ($editedGallery as $key => $value) {
+                if (empty($value)) {
+                    return null;
+                }
+            }
+            Galleries::update($id, $editedGallery, $_FILES['image']);
+            $this->redirect('/admin/galleries');
+        }
+
         if (!empty($params)) {
             $gallery = Galleries::findById($params[0]);
 

@@ -5,6 +5,7 @@ namespace core;
 class Core
 {
     public $defaultLayoutPath = 'views/layouts/index.php';
+    public $rootDirPath = __DIR__ . DIRECTORY_SEPARATOR . '..';
 
     public $moduleName;
     public $actionName;

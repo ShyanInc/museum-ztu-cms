@@ -6,6 +6,15 @@
 $this->Title = 'Управління галереями';
 ?>
 <h1 class="text-center">Управління галереями</h1>
+<hr>
+<div class="d-flex justify-content-center">
+    <a href="/galleries/add">
+        <button type="button" class="btn btn-success"><i class="bi bi-plus-circle"></i><span> Створити галерею
+        </span></button>
+    </a>
+</div>
+<hr>
+<h2 class="text-center">Галереї</h2>
 <table id="galleries-table" class="table table-striped">
     <thead>
     <tr>

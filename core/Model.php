@@ -26,6 +26,13 @@ class Model
 
     public static function deleteById($id)
     {
+        $candidate = self::findById($id);
+        if (!empty($candidate['image'])) {
+            $imagePath = Core::getInstance()->rootDirPath . $candidate['image'];
+            if (is_file($imagePath)) {
+                unlink($imagePath);
+            }
+        }
         Core::getInstance()->db->delete(static::$tableName, [static::$primaryKey => $id]);
     }
 
@@ -64,6 +71,11 @@ class Model
         }
     }
 
+    public static function updateById($id, $assocArray)
+    {
+        return Core::getInstance()->db->update(static::$tableName, $assocArray, [static::$primaryKey => $id]);
+    }
+
     public function save()
     {
         $isInsert = false;
@@ -82,6 +94,38 @@ class Model
         } else {
             // update
             Core::getInstance()->db->update(static::$tableName, $this->fieldsArray, [static::$primaryKey => $this->{static::$primaryKey}]);
+        }
+    }
+
+    public static function uploadImage($image): ?string
+    {
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+        $maxSize = 2 * 1024 * 1024;
+
+        if (!in_array($image['type'], $allowedTypes)) {
+            return null;
+        }
+
+        if ($image['size'] > $maxSize) {
+            return null;
+        }
+
+        $tmpName = $image['tmp_name'];
+        $fileId = uniqid();
+        $extension = pathinfo($image['name'], PATHINFO_EXTENSION);
+
+        $rootPath = Core::getInstance()->rootDirPath;
+        $folderPath = "/static/uploads/images/" . static::$tableName . "/";
+        if (!file_exists($rootPath . $folderPath)) {
+            mkdir($rootPath . $folderPath, 0777, true);
+        }
+
+        $newPath = $folderPath . $fileId . '.' . $extension;
+
+        if (move_uploaded_file($tmpName, $rootPath . $newPath)) {
+            return $newPath;
+        } else {
+            return null;
         }
     }
 }

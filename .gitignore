@@ -1,2 +1,5 @@
 .idea
 .DS_Store
+
+# ignore folder with uploaded static
+static/uploads
