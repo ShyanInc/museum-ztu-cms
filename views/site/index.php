@@ -18,28 +18,28 @@
         <div class="row row-cols-1 row-cols-sm-2 g-4">
             <div class="col d-flex flex-column gap-2">
                 <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                    +
+                    <i class="bi bi-collection"></i>
                 </div>
                 <h4 class="fw-semibold mb-0 text-body-emphasis">Богата історична колекція</h4>
             </div>
 
             <div class="col d-flex flex-column gap-2">
                 <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                    +
+                    <i class="bi bi-book"></i>
                 </div>
                 <h4 class="fw-semibold mb-0 text-body-emphasis">Освітні програми та майстер-класи</h4>
             </div>
 
             <div class="col d-flex flex-column gap-2">
                 <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                    +
+                    <i class="bi bi-buildings"></i>
                 </div>
                 <h4 class="fw-semibold mb-0 text-body-emphasis">Сучасні виставкові зали</h4>
             </div>
 
             <div class="col d-flex flex-column gap-2">
                 <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
-                    +
+                    <i class="bi bi-award"></i>
                 </div>
                 <h4 class="fw-semibold mb-0 text-body-emphasis">Участь у міжнародних проектах</h4>
             </div>
