@@ -14,7 +14,7 @@ class UsersController extends Controller
         }
 
         if ($this->isPost) {
-            $user = Users::FindByCredentials($this->post->login, $this->post->password);
+            $user = Users::FindByCredentials($this->post->email, $this->post->password);
             if (!empty($user)) {
                 Users::LoginUser($user);
                 return $this->redirect('/');
@@ -29,10 +29,10 @@ class UsersController extends Controller
     public function actionRegister()
     {
         if ($this->isPost) {
-            $user = Users::FindByLogin($this->post->login);
+            $user = Users::FindByEmail($this->post->email);
 
             if (!empty($user)) {
-                $this->addErrorMessage('Користувач з таким логіном вже існує');
+                $this->addErrorMessage('Користувач з такою ел.поштою вже існує');
             }
 
             if (strlen($this->post->login) === 0) {

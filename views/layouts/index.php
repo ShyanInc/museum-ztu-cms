@@ -21,6 +21,7 @@ if (empty($Content)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $Title ?></title>
 
+    <link rel="stylesheet" href="/globals/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -29,62 +30,43 @@ if (empty($Content)) {
 </head>
 <body>
 <div class="container">
-    <header class="p-3 mb-3 border-bottom">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                    <use xlink:href="#bootstrap"></use>
-                </svg>
-            </a>
+    <header class="d-flex flex-wrap justify-content-between py-3">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 link-body-emphasis text-decoration-none">
+            <span class="fs-4">Museum</span>
+        </a>
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/" class="nav-link px-2 link-secondary">Головна</a></li>
-                <li><a href="#" class="nav-link px-2 link-body-emphasis">Customers</a></li>
-                <li><a href="#" class="nav-link px-2 link-body-emphasis">Products</a></li>
-                <?php if (!Users::IsUserLogged()) : ?>
-                    <li><a href="/users/login" class="nav-link px-2 link-body-emphasis">Увійти</a></li>
-                    <li><a href="/users/register" class="nav-link px-2 link-body-emphasis">Зареєструватися</a></li>
-                <?php endif; ?>
-            </ul>
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-            </form>
-
-            <?php if (Users::IsUserLogged()) : ?>
-                <div class="dropdown text-end">
-                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu text-small">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="/users/logout">Вийти</a></li>
-                    </ul>
-                </div>
-            <?php endif; ?>
-        </div>
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Головна</a></li>
+            <li class="nav-item"><a href="/about" class="nav-link">Про музей</a></li>
+            <li class="nav-item"><a href="/galleries" class="nav-link">Галереї</a></li>
+            <li class="nav-item"><a href="/events" class="nav-link">Події</a></li>
+            <li class="nav-item"><a href="/contact" class="nav-link">Контакти</a></li>
+        </ul>
+        <?php if (!Users::IsUserLogged()) : ?>
+            <div class="text-end">
+                <a href="/users/login">
+                    <button type="button" class="btn btn-outline-dark me-2">Увійти</button>
+                </a>
+                <a href="/users/register">
+                    <button type="button" class="btn btn-warning">Зареєструватися</button>
+                </a>
+            </div>
+        <?php endif; ?>
     </header>
 </div>
 <div class="container">
-    <h1><?= $Title ?></h1>
-    <h1><?= $Content ?></h1>
+    <?= $Content ?>
 </div>
 <div class="container">
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+            <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Головна</a></li>
+            <li class="nav-item"><a href="/about" class="nav-link px-2 text-body-secondary">Про музей</a></li>
+            <li class="nav-item"><a href="/galleries" class="nav-link px-2 text-body-secondary">Галереї</a></li>
+            <li class="nav-item"><a href="/events" class="nav-link px-2 text-body-secondary">Події</a></li>
+            <li class="nav-item"><a href="/contacts" class="nav-link px-2 text-body-secondary">Контакти</a></li>
         </ul>
-        <p class="text-center text-body-secondary">© 2024 Company, Inc</p>
+        <p class="text-center text-body-secondary">© 2024 Museum</p>
     </footer>
 </div>
 </body>

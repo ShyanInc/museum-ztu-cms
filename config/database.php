@@ -2,7 +2,7 @@
 
 $Config[] = [
     'dbHost' => 'localhost',
-    'dbName' => 'cms',
+    'dbName' => 'museum',
     'dbLogin' => 'cms',
     'dbPassword' => 'kmXgJ0XU_v_tr[c.',
 ];

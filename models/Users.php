@@ -26,7 +26,7 @@ class Users extends Model
         }
     }
 
-    public static function FindByLogin($login)
+    public static function FindByEmail($login)
     {
         $rows = self::findByCondition(['login' => $login]);
         if (!empty($rows)) {
