@@ -76,8 +76,8 @@ if (empty($Content)) {
 <div class="container">
     <?= $Content ?>
 </div>
-<div class="container">
-    <footer class="py-3 my-4">
+<footer class="footer mt-auto py-3">
+    <div class="container">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Головна</a></li>
             <li class="nav-item"><a href="/about" class="nav-link px-2 text-body-secondary">Про музей</a></li>
@@ -86,7 +86,7 @@ if (empty($Content)) {
             <li class="nav-item"><a href="/contacts" class="nav-link px-2 text-body-secondary">Контакти</a></li>
         </ul>
         <p class="text-center text-body-secondary">© 2024 Museum</p>
-    </footer>
-</div>
+    </div>
+</footer>
 </body>
 </html>
