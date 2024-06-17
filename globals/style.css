@@ -14,4 +14,5 @@ a {
 
 .gallery-card-image img {
     height: 225px;
+    width: 100%;
 }

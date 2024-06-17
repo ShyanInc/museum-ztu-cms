@@ -15,7 +15,7 @@ $this->Title = 'Публікації';
                     <div class="card shadow-sm">
                         <div class="card-body">
                             <h3 class="card-text"><?= $post['title'] ?></h3>
-                            <h5 class="card-text"><?= $post['author'] ?></h5>
+                            <h5 class="card-text"><?= $post['author_surname'] ?> <?= $post['author_name'] ?></h5>
                             <p class="card-text"><?= $post['content'] ?></p>
                             <p class="card-text">Дата публікації: <?= $post['created_at'] ?></p>
                         </div>

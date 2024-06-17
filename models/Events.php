@@ -15,4 +15,6 @@ use core\Model;
 class Events extends Model
 {
     public static $tableName = 'events';
+
+
 }

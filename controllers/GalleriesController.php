@@ -39,6 +39,9 @@ class GalleriesController extends Controller
         return $this->render();
     }
 
+    /**
+     * @throws \Exception
+     */
     public function actionEdit(array $params)
     {
         if (count($params) === 0) {
@@ -54,7 +57,7 @@ class GalleriesController extends Controller
                     return null;
                 }
             }
-            Galleries::update($id, $editedGallery, $_FILES['image']);
+            Galleries::updateWithImage($id, $editedGallery, $_FILES['image']);
             $this->redirect('/admin/galleries');
         }
 

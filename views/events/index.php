@@ -14,7 +14,7 @@ $this->Title = 'Events';
                 <div class="col">
                     <div class="card shadow-sm">
                         <div class="gallery-card-image">
-                            <img src="/globals/images/gallery.jpg" alt="gallery img">
+                            <img src="/globals/images/event.png" alt="event img">
                         </div>
                         <div class="card-body">
                             <h3 class="card-text"><?= $event['title'] ?></h3>
