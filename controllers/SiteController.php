@@ -3,11 +3,13 @@
 namespace controllers;
 
 use core\Controller;
+use models\Posts;
 
 class SiteController extends Controller
 {
     public function actionIndex()
     {
-        return $this->render();
+        $posts = Posts::findLatestWithLimit(3);
+        return $this->render(null, ['posts' => $posts]);
     }
 }

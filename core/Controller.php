@@ -11,6 +11,7 @@ class Controller
     public $isGet = false;
     public $post;
     public $get;
+    public $user;
 
     public function __construct()
     {
@@ -29,6 +30,7 @@ class Controller
         $this->post = new Post();
         $this->get = new Get();
         $this->errorMessages = [];
+        $this->user = Core::getInstance()->session->get('user');
     }
 
     public function render($pathToView = null, $params = null): array

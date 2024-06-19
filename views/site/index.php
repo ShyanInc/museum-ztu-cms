@@ -1,4 +1,10 @@
-<?php $this->Title = 'Головна'; ?>
+<?php
+/**
+ * @var array|null $posts ;
+ */
+
+$this->Title = 'Головна';
+?>
 <div class="pt-5 text-center border-bottom hero-image">
     <h1 class="display-4 fw-bold text-body-emphasis">Ласкаво просимо до нашого музею!</h1>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-4">
@@ -49,60 +55,38 @@
 <hr>
 <div class="row g-5">
     <div class="col-md-8">
-        <h3 class="display-5 text-center">Нова публікація</h3>
-        <article class="blog-post">
-            <h4 class="display-6 link-body-emphasis mb-1">Post Title</h4>
-            <p class="blog-post-meta">Post date by <a href="#">Author</a></p>
-
-            <p>Post content</p>
-            <hr>
-            <p>Post content 2</p>
-        </article>
+        <?php if (!empty($posts)): $post = $posts[0]; ?>
+            <h3 class="display-5 text-center">Нова публікація</h3>
+            <article class="blog-post">
+                <h4 class="display-6 link-body-emphasis mb-1"><?= $post['title'] ?></h4>
+                <p class="blog-post-meta"><?= $post['created_at'] ?>
+                    by <span><?= $post['author_surname'] ?> <?= $post['author_name'] ?></span></p>
+                <p><?= $post['content'] ?></p>
+            </article>
+        <?php else: ?>
+            <h3 class="display-5 text-center">Публікацій поки немає</h3>
+        <?php endif; ?>
     </div>
     <div class="col-md-4">
         <div>
             <h4 class="fst-italic">Нещодавні публікації</h4>
-            <ul class="list-unstyled">
-                <li>
-                    <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
-                       href="#">
-                        <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg"
-                             aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <rect width="100%" height="100%" fill="#777"></rect>
-                        </svg>
-                        <div class="col-lg-8">
-                            <h6 class="mb-0">Example blog post title</h6>
-                            <small class="text-body-secondary">January 15, 2024</small>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
-                       href="#">
-                        <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg"
-                             aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <rect width="100%" height="100%" fill="#777"></rect>
-                        </svg>
-                        <div class="col-lg-8">
-                            <h6 class="mb-0">This is another blog post title</h6>
-                            <small class="text-body-secondary">January 14, 2024</small>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
-                       href="#">
-                        <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg"
-                             aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <rect width="100%" height="100%" fill="#777"></rect>
-                        </svg>
-                        <div class="col-lg-8">
-                            <h6 class="mb-0">Longer blog post title: This one has multiple lines!</h6>
-                            <small class="text-body-secondary">January 13, 2024</small>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+            <?php if (!empty($posts)): ?>
+                <ul class="list-unstyled">
+                    <?php foreach ($posts as $post): ?>
+                        <li>
+                            <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                               href="posts/<?= $post['id'] ?>">
+                                <div class="col-lg-8">
+                                    <h6 class="mb-0"><?= $post['title'] ?></h6>
+                                    <small class="text-body-secondary"><?= $post['created_at'] ?></small>
+                                </div>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Публікацій поки немає</p>
+            <?php endif; ?>
         </div>
     </div>
 </div>

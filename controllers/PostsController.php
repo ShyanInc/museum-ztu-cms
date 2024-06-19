@@ -84,9 +84,8 @@ class PostsController extends Controller
     {
         if (!empty($params)) {
             $id = $params[0];
-            $user = Core::getInstance()->session->get('user');
             $post = Posts::findById($id);
-            if ($user['id'] === $post['author_id'] || $user['role'] === 'admin') {
+            if ($this->user['id'] === $post['author_id'] || $this->user['role'] === 'admin') {
                 Posts::deleteById($id);
                 $this->redirect('/admin/posts');
                 die;

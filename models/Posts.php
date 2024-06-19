@@ -28,4 +28,10 @@ class Posts extends Model
         $sql = 'SELECT posts.*, users.name AS author_name, users.surname AS author_surname FROM `' . self::$tableName . '` posts JOIN `users` ON users.id = posts.author_id WHERE posts.author_id = ' . $authorId;
         return Core::getInstance()->db->pdo->query($sql)->fetchAll();
     }
+
+    public static function findLatestWithLimit(int $limit): ?array
+    {
+        $sql = 'SELECT posts.*, users.name AS author_name, users.surname AS author_surname FROM `' . self::$tableName . '` posts JOIN `users` ON users.id = posts.author_id ORDER BY posts.created_at DESC LIMIT ' . $limit;
+        return Core::getInstance()->db->pdo->query($sql)->fetchAll();
+    }
 }

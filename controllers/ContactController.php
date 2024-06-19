@@ -32,4 +32,17 @@ class ContactController extends Controller
     {
         return $this->render();
     }
+
+    public function actionDelete($params)
+    {
+        if ($this->user['role'] !== 'admin' || empty($params)) {
+            $this->redirect('/');
+            die;
+        }
+
+        $id = $params[0];
+        Contacts::deleteById($id);
+        $this->redirect('/admin/messages');
+        die;
+    }
 }

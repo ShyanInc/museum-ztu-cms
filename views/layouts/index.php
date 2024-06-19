@@ -63,6 +63,7 @@ if (empty($Content)) {
                 <ul class="dropdown-menu">
 
                     <?php if (Users::IsUserAdmin()) : ?>
+                        <li><a class="dropdown-item" href="/admin/messages">Повідомлення</a></li>
                         <li><a class="dropdown-item" href="/admin/galleries">Галереї</a></li>
                         <li><a class="dropdown-item" href="/admin/events">Події</a></li>
                     <?php endif; ?>
