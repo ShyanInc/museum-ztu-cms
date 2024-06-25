@@ -48,10 +48,10 @@ if (empty($Content)) {
         </ul>
         <?php if (!Users::IsUserLogged()) : ?>
             <div class="text-end">
-                <a href="/users/login">
+                <a class="text-decoration-none" href="/users/login">
                     <button type="button" class="btn btn-outline-dark me-2">Увійти</button>
                 </a>
-                <a href="/users/register">
+                <a class="text-decoration-none" href="/users/register">
                     <button type="button" class="btn btn-warning">Зареєструватися</button>
                 </a>
             </div>
@@ -77,14 +77,15 @@ if (empty($Content)) {
 <div class="container">
     <?= $Content ?>
 </div>
-<footer class="footer mt-auto py-3">
+<footer class="footer mt-auto pt-5 pb-3">
     <div class="container">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Головна</a></li>
             <li class="nav-item"><a href="/about" class="nav-link px-2 text-body-secondary">Про музей</a></li>
             <li class="nav-item"><a href="/galleries" class="nav-link px-2 text-body-secondary">Галереї</a></li>
             <li class="nav-item"><a href="/events" class="nav-link px-2 text-body-secondary">Події</a></li>
-            <li class="nav-item"><a href="/contacts" class="nav-link px-2 text-body-secondary">Контакти</a></li>
+            <li class="nav-item"><a href="/posts" class="nav-link px-2 text-body-secondary">Публікації</a></li>
+            <li class="nav-item"><a href="/contact" class="nav-link px-2 text-body-secondary">Контакти</a></li>
         </ul>
         <p class="text-center text-body-secondary">© 2024 Museum</p>
     </div>

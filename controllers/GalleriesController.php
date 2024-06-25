@@ -13,6 +13,20 @@ class GalleriesController extends Controller
         return $this->render(null, ['galleries' => $galleries]);
     }
 
+    public function actionView($params)
+    {
+        if (empty($params)) {
+            $this->redirect('/galleries');
+            die;
+        }
+        $id = $params[0];
+        $gallery = Galleries::findById($id);
+        if (empty($gallery)) {
+            $this->redirect('/galleries');
+        }
+        return $this->render(null, ['gallery' => $gallery]);
+    }
+
     public function actionAdd()
     {
         if ($this->isPost) {

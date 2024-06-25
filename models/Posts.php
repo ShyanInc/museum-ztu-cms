@@ -19,8 +19,14 @@ class Posts extends Model
 
     public static function findAll(): ?array
     {
-        $sql = 'SELECT posts.*, users.name AS author_name, users.surname AS author_surname FROM `' . self::$tableName . '` posts JOIN `users` ON users.id = posts.author_id';
+        $sql = 'SELECT posts.*, users.name AS author_name, users.surname AS author_surname FROM `' . self::$tableName . '` posts JOIN `users` ON users.id = posts.author_id ORDER BY posts.created_at DESC';
         return Core::getInstance()->db->pdo->query($sql)->fetchAll();
+    }
+
+    public static function findById($id): ?array
+    {
+        $sql = 'SELECT posts.*, users.name AS author_name, users.surname AS author_surname FROM `' . self::$tableName . '` posts JOIN `users` ON users.id = posts.author_id WHERE posts.id = ' . $id;
+        return Core::getInstance()->db->pdo->query($sql)->fetch();
     }
 
     public static function findByAuthorId(int $authorId): ?array

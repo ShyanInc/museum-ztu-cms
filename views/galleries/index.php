@@ -21,7 +21,10 @@ $this->Title = 'Галереї';
                             <p class="card-text"><?= $gallery['short_description'] ?></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Детальніше</button>
+                                    <a href="/galleries/view/<?= $gallery['id'] ?>">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Детальніше
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

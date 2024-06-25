@@ -18,11 +18,14 @@ $this->Title = 'Events';
                         </div>
                         <div class="card-body">
                             <h3 class="card-text"><?= $event['title'] ?></h3>
-                            <p class="card-text">Початок: <?= $event['start_date'] ?></p>
+                            <p class="card-text mt-auto">Початок: <?= $event['start_date'] ?></p>
                             <p class="card-text">Закінчення: <?= $event['end_date'] ?></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Детальніше</button>
+                                    <a href="/events/view/<?= $event['id'] ?>">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Детальніше
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

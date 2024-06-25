@@ -14,6 +14,20 @@ class PostsController extends Controller
         return $this->render(null, ['posts' => $posts]);
     }
 
+    public function actionView($params)
+    {
+        if (empty($params)) {
+            $this->redirect('/posts');
+            die;
+        }
+        $id = $params[0];
+        $post = Posts::findById($id);
+        if (empty($post)) {
+            $this->redirect('/posts');
+        }
+        return $this->render(null, ['post' => $post]);
+    }
+
     public function actionAdd()
     {
         if ($this->isPost) {

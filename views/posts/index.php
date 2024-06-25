@@ -14,10 +14,11 @@ $this->Title = 'Публікації';
                 <div class="col">
                     <div class="card shadow-sm">
                         <div class="card-body">
-                            <h3 class="card-text"><?= $post['title'] ?></h3>
-                            <h5 class="card-text"><?= $post['author_surname'] ?> <?= $post['author_name'] ?></h5>
-                            <p class="card-text"><?= $post['content'] ?></p>
-                            <p class="card-text">Дата публікації: <?= $post['created_at'] ?></p>
+                            <a class="text-decoration-none mb-2" href="/posts/view/<?= $post['id'] ?>">
+                                <h3 class="card-text"><?= $post['title'] ?></h3>
+                            </a>
+                            <h5 class="card-text mb-2"><?= $post['author_surname'] ?> <?= $post['author_name'] ?></h5>
+                            <p class="card-text mt-auto">Дата публікації: <?= $post['created_at'] ?></p>
                         </div>
                     </div>
                 </div>

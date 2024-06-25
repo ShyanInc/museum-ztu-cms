@@ -13,6 +13,20 @@ class EventsController extends Controller
         return $this->render(null, ['events' => $events]);
     }
 
+    public function actionView($params)
+    {
+        if (empty($params)) {
+            $this->redirect('/events');
+            die;
+        }
+        $id = $params[0];
+        $event = Events::findById($id);
+        if (empty($event)) {
+            $this->redirect('/events');
+        }
+        return $this->render(null, ['event' => $event]);
+    }
+
     public function actionAdd()
     {
         if ($this->isPost) {

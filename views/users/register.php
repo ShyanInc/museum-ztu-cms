@@ -2,7 +2,7 @@
 /** @var string $error_message Error message */
 $this->Title = 'Реєстрація нового користувача';
 ?>
-<div class="container-form">
+<div class="container-form position-absolute top-50 start-50 translate-middle">
     <form method="post" action="">
         <?php if (!empty($error_message)) : ?>
             <div class="alert alert-danger" role="alert">
